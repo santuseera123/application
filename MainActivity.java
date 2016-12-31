@@ -1,83 +1,50 @@
-package myapplicationishello.com.example.hsport.sqlitedatabase;
+package myapplicationishello.com.example.hsport.storage;
 
-import android.content.ContentValues;
+import android.app.Activity;
 import android.content.Context;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
-    EditText et1,et2,et3,et4;
-    SQLiteDatabase dBase;
+public class MainActivity extends AppCompatActivity{
+    SharedPreferences.Editor spe;
+    EditText et1,et2,et3,et4,et5,et6;
+    SharedPreferences spf;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        dBase=openOrCreateDatabase("emp_db",Context.MODE_PRIVATE,null);
-        dBase.execSQL("create table if not exists emp(id name,name varchar(100),desig varchar(100),dept varchar(100))");
-        et1=(EditText)findViewById(R.id.editText);
-        et2=(EditText)findViewById(R.id.editText2);
-        et3=(EditText)findViewById(R.id.editText3);
-        et4=(EditText)findViewById(R.id.editText4);
+        spf=getSharedPreferences("myprefs", Context.MODE_PRIVATE);
+        spe=spf.edit();
+         et1=(EditText)findViewById(R.id.editText);
+         et2=(EditText)findViewById(R.id.editText2);
+         et3=(EditText)findViewById(R.id.editText3);
+         et4=(EditText)findViewById(R.id.editText4);
+         et5=(EditText)findViewById(R.id.editText5);
+         et6=(EditText)findViewById(R.id.editText6);
     }
 
-      public void insert(View v){
-          ContentValues values=new ContentValues();
-          values.put("id",Integer.parseInt(et1.getText().toString()));
-          values.put("name",et2.getText().toString());
-          values.put("desig",et3.getText().toString());
-          values.put("dept",et4.getText().toString());
-          long count=dBase.insert("emp",null,values);
-          if(count>0){
-              Toast.makeText(getApplicationContext(),"data is inserted",Toast.LENGTH_LONG).show();
-              et1.setText("");
-              et2.setText("");
-              et3.setText("");
-              et4.setText("");
-          }
-          else {
-              Toast.makeText(getApplicationContext(),"data is not  inserted",Toast.LENGTH_LONG).show();
-          }
-      }
-      public  void read(View v){
+    public void login(View v){
+        String name=spf.getString("uname","novalue");
+        String pass=spf.getString("pass","novalue");
+        if(et1.getText().toString().equalsIgnoreCase(name)&&et2.getText().toString().equalsIgnoreCase(pass)){
 
-          Cursor c=dBase.query("emp",new String[]{"id","name","desig","dept"},null,null,null,null,null);
-          while (c.moveToNext()){
-              String record=c.getInt(0)+"\n"+c.getString(1)+"\n"+c.getString(2)+"\n"+c.getString(3);
+            Toast.makeText(getApplicationContext(),"successs",Toast.LENGTH_LONG).show();
+        }else {
 
-              Toast.makeText(getApplicationContext(),record,Toast.LENGTH_LONG).show();
-          }
-      }
-       public void update(View v){
-           ContentValues values=new ContentValues();
-           values.put("name",et2.getText().toString());
-           values.put("desig",et3.getText().toString());
-           values.put("dept",et4.getText().toString());
-           long count=dBase.update("emp",values,"id=?",new String[]{et1.getText().toString()});
-           if(count>0){
-               Toast.makeText(getApplicationContext(),"data is updated",Toast.LENGTH_LONG).show();
-               et1.setText("");
-               et2.setText("");
-               et3.setText("");
-               et4.setText("");
-           }
-           else{
-
-               Toast.makeText(getApplicationContext(),"data not updated",Toast.LENGTH_LONG).show();
-           }
-       }
-    public  void delete(View v) {
-        long count = dBase.delete("emp", "id=?", new String[]{et1.getText().toString()});
-        if (count > 0) {
-
-            Toast.makeText(getApplicationContext(), "Record is deleted", Toast.LENGTH_LONG).show();
-        } else {
-
-            Toast.makeText(getApplicationContext(), "Record is not deleted", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(),"INVALID",Toast.LENGTH_LONG).show();
         }
+    }
+    public  void register(View v){
+
+        SharedPreferences.Editor spe=spf.edit();
+        spe.putString("uname",et3.getText().toString());
+        spe.putString("pass",et4.getText().toString());
+        spe.putString("Mobile No",et5.getText().toString());
+        spe.putString("eMail",et6.getText().toString());
+        spe.commit();
     }
 }

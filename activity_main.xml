@@ -7,15 +7,14 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="myapplicationishello.com.example.hsport.sqlitedatabase.MainActivity">
+    tools:context="myapplicationishello.com.example.hsport.storage.MainActivity">
+
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="number"
-        android:hint="Enter id"
-        android:ems="10"
         android:id="@+id/editText"
         android:layout_alignParentTop="true"
+        android:hint="uname"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentLeft="true"
@@ -24,83 +23,74 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Enter name"
         android:id="@+id/editText2"
+        android:hint="pass"
         android:layout_below="@+id/editText"
         android:layout_alignRight="@+id/editText"
         android:layout_alignEnd="@+id/editText"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
-    <EditText
+
+    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Enter desig"
-        android:id="@+id/editText3"
+        android:text="LOGIN"
+        android:onClick="login"
+        android:id="@+id/button"
         android:layout_below="@+id/editText2"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="60dp" />
+
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="Enter dept"
-        android:ems="10"
+        android:id="@+id/editText3"
+        android:layout_centerVertical="true"
+        android:hint="uname"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:id="@+id/editText4"
+        android:hint="pass"
         android:layout_below="@+id/editText3"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
-    <Button
+    <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="INSERT"
-        android:onClick="insert"
-        android:background="#cc3399"
-        android:id="@+id/button"
-        android:layout_centerVertical="true"
+        android:id="@+id/editText5"
+        android:layout_below="@+id/editText4"
+        android:hint="Mobile No"
+        android:layout_alignRight="@+id/editText4"
+        android:layout_alignEnd="@+id/editText4"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText6"
+        android:hint="eMail"
+        android:layout_below="@+id/editText5"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="READ"
-        android:onClick="read"
+        android:text="REGISTER"
+        android:onClick="register"
         android:id="@+id/button2"
-        android:background="#cc3399"
-        android:layout_alignTop="@+id/button"
-        android:layout_alignRight="@+id/editText4"
-        android:layout_alignEnd="@+id/editText4"
-        android:layout_marginRight="40dp"
-        android:layout_marginEnd="40dp" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="UPDATE"
-        android:onClick="update"
-        android:id="@+id/button3"
-        android:background="#cc3399"
-        android:layout_below="@+id/button"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="76dp" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="DELETE"
-        android:onClick="delete"
-        android:background="#cc3399"
-        android:id="@+id/button4"
-        android:layout_alignBottom="@+id/button3"
-        android:layout_alignLeft="@+id/button2"
-        android:layout_alignStart="@+id/button2"
-        android:layout_alignRight="@+id/button2"
-        android:layout_alignEnd="@+id/button2" />
+        android:layout_below="@+id/editText6"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>
