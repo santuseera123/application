@@ -1,36 +1,37 @@
-package myapplicationishello.com.example.hsport.bttest;
+package myapplicationishello.com.example.hsport.fragementconcept;
 
-import android.bluetooth.BluetoothAdapter;
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.CompoundButton;
-import android.widget.Switch;
 
 public class MainActivity extends AppCompatActivity {
-    Switch sw1;
-    BluetoothAdapter bAdapter;
+    android.app.FragmentTransaction tx;
+    FragmentManager fmanager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        sw1=(Switch)findViewById(R.id.switch1);
-        bAdapter=BluetoothAdapter.getDefaultAdapter();
-        sw1.setChecked(bAdapter.isEnabled());
-        sw1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if(b){
-                    bAdapter.enable();
-                 }
-                else{
-                    bAdapter.disable();
-                 }
-             }
-        });
-      }
+    }
 
-       public void getbtdevices(View v){
-           bAdapter.startDiscovery();
-       }
+    public  void home(View v){
+        FragmentManager fmanager=getFragmentManager();
+        tx=fmanager.beginTransaction();
+        tx.replace(R.id.fragment,new Homefragement());
+        tx.commit();
+    }
+    public  void gallery(View v){
+        FragmentManager fmanager=getFragmentManager();
+        tx=fmanager.beginTransaction();
+        tx.replace(R.id.fragment,new Galleryfragement());
+        tx.commit();
+    }
+    public void contactus(View v){
+        FragmentManager fmanager=getFragmentManager();
+        tx=fmanager.beginTransaction();
+        tx.replace(R.id.fragment,new Contactusfragement());
+    }
 }
