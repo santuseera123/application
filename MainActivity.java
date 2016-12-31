@@ -1,67 +1,32 @@
-package myapplicationishello.com.example.hsport.imagesandgallerytest;
+package myapplicationishello.com.example.hsport.audiorecordingtest;
 
-import android.content.Intent;
-import android.net.Uri;
-import android.provider.MediaStore;
+import android.media.MediaRecorder;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageView;
-
-import java.io.File;
 
 public class MainActivity extends AppCompatActivity {
-
+   MediaRecorder recorder;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        recorder=new MediaRecorder();
+        recorder=new MediaRecorder();
+        recorder.setAudioSource(MediaRecorder.AudioSource.MIC);
+        recorder.setOutputFormat(MediaRecorder.OutputFormat.AMR_NB);
+        recorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
+        recorder.setOutputFile("/storage/sdcard0/obb.amr");
     }
-      String path=("/storage/sdcard0/obb.jpg");
-      File f;
-      public  void camera(View v){
-          Intent i=new Intent("android.media.action.IMAGE_CAPTURE");
-          f=new File(path);
-          i.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(f));
-          startActivityForResult(i,1);
+      public void start(View v){
+      try {
+          recorder.prepare();
+          recorder.start();
+      }catch (Exception e){
       }
-
-      public  void gallery(View v){
-          Intent i=new Intent();
-          i.setAction(Intent.ACTION_PICK);
-          i.setType("image/*");
-          startActivityForResult(i,2);
       }
+     public void stop(View v){
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        ImageView iView=(ImageView)findViewById(R.id.imageView);
-        if(requestCode==1){
-            iView.setImageURI(Uri.fromFile(f));
-        }
-        else if(requestCode==2){
-            iView.setImageURI(data.getData());
-        }
-    }
+         recorder.stop();
+     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
