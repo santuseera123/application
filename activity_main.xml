@@ -7,49 +7,35 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="myapplicationishello.com.example.hsport.qtp.MainActivity">
+    tools:context="myapplicationishello.com.example.hsport.wifitest.MainActivity">
 
+    <Switch
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=" Switch"
+        android:id="@+id/switch1"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="71dp"
+        android:checked="false" />
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="SEND"
-        android:onClick="button"
+        android:text="GetScanResults"
         android:id="@+id/button"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-
-    <EditText
+        android:onClick="getscanresults"
+        android:background="#cc9933"
+        android:layout_below="@+id/switch1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="61dp" />
+    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/et1"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_toLeftOf="@+id/button"
-        android:layout_toStartOf="@+id/button" />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="MESSAGE APP"
-        android:id="@+id/textView2"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:background="@android:color/holo_red_light" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="400dp"
-        android:background="@drawable/ram"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:id="@+id/tv1"
-        android:layout_below="@+id/textView2"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignRight="@+id/textView2"
-        android:layout_alignEnd="@+id/textView2" />
+        android:text="GETCONFIGUREDNETWORKS"
+        android:onClick="getconfigurednetworks"
+        android:background="#cc9933"
+        android:id="@+id/button2"
+        android:layout_below="@+id/button"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="77dp" />
 </RelativeLayout>
