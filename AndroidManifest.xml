@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="myapplicationishello.com.example.hsport.storage">
+    package="myapplicationishello.com.example.hsport.intent_tutorial">
 
     <application
         android:allowBackup="true"
