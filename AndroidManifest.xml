@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="myapplicationishello.com.example.hsport.time_picker">
+    package="myapplicationishello.com.example.hsport.jsontest">
 
     <application
         android:allowBackup="true"
