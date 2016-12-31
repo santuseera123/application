@@ -1,59 +1,84 @@
-package myapplicationishello.com.example.hsport.wifitest;
+ package myapplicationishello.com.example.hsport.xmltest;
 
-import android.content.Context;
-import android.net.wifi.ScanResult;
-import android.net.wifi.WifiConfiguration;
-import android.net.wifi.WifiManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.CompoundButton;
-import android.widget.Switch;
-import android.widget.Toast;
+import android.widget.EditText;
 
-import java.util.List;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
 
-public class MainActivity extends AppCompatActivity {
-    WifiManager wmanager;
-    Switch sw1;
+import java.io.FileOutputStream;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.transform.Result;
+import javax.xml.transform.Source;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+
+ public class MainActivity extends AppCompatActivity {
+     EditText et1,et2,et3,et4;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        wmanager=(WifiManager)getSystemService(Context.WIFI_SERVICE);
-        sw1=(Switch)findViewById(R.id.switch1);
-        int i=wmanager.getWifiState();
-
-        if(i==0){
-            sw1.setChecked(false);
-        }else  if(i==3){
-            sw1.setChecked(true);
-        }
-
-        sw1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if(b){
-                    wmanager.setWifiEnabled(true);
-                }else{
-                    wmanager.setWifiEnabled(false);
-                }
-            }
-        });
+        et1=(EditText)findViewById(R.id.et1);
+        et2=(EditText)findViewById(R.id.et2);
+        et3=(EditText)findViewById(R.id.et3);
+        et4=(EditText)findViewById(R.id.et4);
     }
-        public void getscanresults(View v){
-            List<ScanResult>results=wmanager.getScanResults();
-            for(int i=0;i<results.size();i++){
 
-                ScanResult result=results.get(i);
-                Toast.makeText(getApplicationContext(),result.SSID+"/n"+result.frequency,2000).show();
-            }
+      public void insert(View v) {
+        try {
+            DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder builder = factory.newDocumentBuilder();
+            Document d = builder.newDocument();
+            Element e1 = d.createElement("employees");
+            Element e2 = d.createElement("employee");
+            Element e3 = d.createElement("id");
+            Element e4 = d.createElement("name");
+            Element e5 = d.createElement("desig");
+            Element e6 = d.createElement("dept");
+
+            Node n1 = d.createTextNode(et1.getText().toString());
+            Node n2 = d.createTextNode(et2.getText().toString());
+            Node n3 = d.createTextNode(et3.getText().toString());
+            Node n4 = d.createTextNode(et4.getText().toString());
+
+            e3.appendChild(n1);
+            e4.appendChild(n2);
+            e5.appendChild(n3);
+            e6.appendChild(n4);
+
+            e2.appendChild(e3);
+            e2.appendChild(e4);
+            e2.appendChild(e5);
+            e2.appendChild(e6);
+
+            e1.appendChild(e2);
+            d.appendChild(e1);
+            TransformerFactory tFactory = TransformerFactory.newInstance();
+            Transformer t = tFactory.newTransformer();
+            Source source = new DOMSource(d);
+            FileOutputStream fos = new FileOutputStream("/storage/SdCard0/obb/emp930.xml");
+            Result result = new StreamResult(fos);
+            t.transform(source, result);
+        }catch (Exception e){
+            e.printStackTrace();
         }
-       public void  getconfigurednetworks(View v){
-           List<WifiConfiguration>configs=wmanager.getConfiguredNetworks();
-           for(int i=0;i<configs.size();i++){
-               WifiConfiguration result=configs.get(i);
-               Toast.makeText(getApplicationContext(),result.SSID+"/n"+result.status,2000).show();
-           }
-       }
+      }
+     public void read(View v){
+
+     }
+     public  void update(View v){
+
+     }
+     public  void delete(View v){
+
+     }
 }
