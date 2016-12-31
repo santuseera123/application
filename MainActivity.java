@@ -1,32 +1,43 @@
-package myapplicationishello.com.example.hsport.audiorecordingtest;
+package myapplicationishello.com.example.hsport.toaccess;
 
-import android.media.MediaRecorder;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
-   MediaRecorder recorder;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        recorder=new MediaRecorder();
-        recorder=new MediaRecorder();
-        recorder.setAudioSource(MediaRecorder.AudioSource.MIC);
-        recorder.setOutputFormat(MediaRecorder.OutputFormat.AMR_NB);
-        recorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
-        recorder.setOutputFile("/storage/sdcard0/obb.amr");
     }
-      public void start(View v){
-      try {
-          recorder.prepare();
-          recorder.start();
-      }catch (Exception e){
-      }
-      }
-     public void stop(View v){
-
-         recorder.stop();
-     }
+    public  void twitter(View v){
+        Intent i=getPackageManager().getLaunchIntentForPackage("com.twitter.android");
+        startActivity(i);
+    }
+    public  void whatsapp(View v){
+        Intent i=getPackageManager().getLaunchIntentForPackage("com.whatsapp");
+        startActivity(i);
+    }
+    public  void mxplayer(View v){
+        Intent i=getPackageManager().getLaunchIntentForPackage("com.mxtech.videoplayer.ad");
+        startActivity(i);
+    }
+    public  void shareit(View v){
+        Intent i=getPackageManager().getLaunchIntentForPackage("com.lenovo.anyshare.gps");
+        startActivity(i);
+    }
+    public  void youtube(View v){
+        Intent i=getPackageManager().getLaunchIntentForPackage("com.google.android.youtube");
+        startActivity(i);
+    }
+    public  void facebook(View v){
+        Intent i=getPackageManager().getLaunchIntentForPackage("com.facebook.katana");
+        startActivity(i);
+    }
+    public  void ucbrowser(View v){
+        Intent i=getPackageManager().getLaunchIntentForPackage("com.UCMobile.intl");
+        startActivity(i);
+    }
 }
