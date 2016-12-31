@@ -7,75 +7,49 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="myapplicationishello.com.example.hsport.toaccess.MainActivity">
+    tools:context="myapplicationishello.com.example.hsport.qtp.MainActivity">
 
     <Button
         android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:background="@drawable/facebook"
-        android:onClick="facebook"
+        android:layout_height="wrap_content"
+        android:text="SEND"
+        android:onClick="button"
         android:id="@+id/button"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:onClick="mxplayer"
-        android:background="@drawable/mxplayer"
-        android:id="@+id/button2"
-        android:layout_below="@+id/button3"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:onClick="shareit"
-        android:background="@drawable/shareit"
-        android:id="@+id/button3"
-        android:layout_below="@+id/button"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
-    <Button
+    <EditText
         android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:background="@drawable/twitter"
-        android:onClick="twitter"
-        android:id="@+id/button4"
-        android:layout_below="@+id/button2"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="61dp" />
+        android:layout_height="wrap_content"
+        android:id="@+id/et1"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_toLeftOf="@+id/button"
+        android:layout_toStartOf="@+id/button" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="MESSAGE APP"
+        android:id="@+id/textView2"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:background="@android:color/holo_red_light" />
 
-    <Button
+    <TextView
         android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:background="@drawable/ucbrowser"
-        android:onClick="ucbrowser"
-        android:id="@+id/button5"
-        android:layout_below="@+id/button4"
-        android:layout_alignRight="@+id/button4"
-        android:layout_alignEnd="@+id/button4"
-        android:layout_marginTop="77dp" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
+        android:layout_height="400dp"
         android:background="@drawable/ram"
-        android:onClick="whatsapp"
-        android:id="@+id/button6"
-        android:layout_alignParentBottom="true"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/tv1"
+        android:layout_below="@+id/textView2"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:background="@drawable/youtube"
-        android:onClick="youtube"
-        android:id="@+id/button7"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/textView2"
+        android:layout_alignEnd="@+id/textView2" />
 </RelativeLayout>
