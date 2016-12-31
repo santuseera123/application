@@ -1,37 +1,67 @@
-package myapplicationishello.com.example.hsport.fragementconcept;
+package myapplicationishello.com.example.hsport.imagesandgallerytest;
 
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
+import android.content.Intent;
+import android.net.Uri;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
+
+import java.io.File;
 
 public class MainActivity extends AppCompatActivity {
-    android.app.FragmentTransaction tx;
-    FragmentManager fmanager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
+      String path=("/storage/sdcard0/obb.jpg");
+      File f;
+      public  void camera(View v){
+          Intent i=new Intent("android.media.action.IMAGE_CAPTURE");
+          f=new File(path);
+          i.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(f));
+          startActivityForResult(i,1);
+      }
 
-    public  void home(View v){
-        FragmentManager fmanager=getFragmentManager();
-        tx=fmanager.beginTransaction();
-        tx.replace(R.id.fragment,new Homefragement());
-        tx.commit();
-    }
-    public  void gallery(View v){
-        FragmentManager fmanager=getFragmentManager();
-        tx=fmanager.beginTransaction();
-        tx.replace(R.id.fragment,new Galleryfragement());
-        tx.commit();
-    }
-    public void contactus(View v){
-        FragmentManager fmanager=getFragmentManager();
-        tx=fmanager.beginTransaction();
-        tx.replace(R.id.fragment,new Contactusfragement());
+      public  void gallery(View v){
+          Intent i=new Intent();
+          i.setAction(Intent.ACTION_PICK);
+          i.setType("image/*");
+          startActivityForResult(i,2);
+      }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        ImageView iView=(ImageView)findViewById(R.id.imageView);
+        if(requestCode==1){
+            iView.setImageURI(Uri.fromFile(f));
+        }
+        else if(requestCode==2){
+            iView.setImageURI(data.getData());
+        }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
