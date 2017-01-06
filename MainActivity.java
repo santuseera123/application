@@ -1,30 +1,23 @@
-package myapplicationishello.com.example.hsport.checkbox;
+package myapplicationishello.com.example.hsport.countryselectedapp;
 
 import android.app.Activity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
-import android.widget.Toast;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 
 public class MainActivity extends Activity {
+    AutoCompleteTextView actv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        CheckBox checkBox=(CheckBox)findViewById(R.id.checkBox);
-        checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(isChecked){
-                    Toast.makeText(getApplicationContext(),"checked",Toast.LENGTH_LONG).show();
-
-                }else {
-                    Toast.makeText(getApplicationContext(),"un checked",Toast.LENGTH_LONG).show();
-                }
-
-                }
-        });
+        actv=(AutoCompleteTextView)findViewById(R.id.actv);
+        String[] values=getResources().getStringArray(R.array.country_name);
+        ArrayAdapter<String>adapter=new ArrayAdapter<String>(getApplicationContext(),android.R.layout.simple_spinner_dropdown_item,
+                values);
+        actv.setAdapter(adapter);
+        actv.setThreshold(1);
     }
 }
