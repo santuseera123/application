@@ -1,125 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-  xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_width="match_parent">
-    <TableLayout
-        android:layout_width="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="myapplicationishello.com.example.hsport.fragementconcept.MainActivity">
+
+    <Button
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        >
-     <TableRow>
-      <TextView
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:text="Student Registration Form"
-          android:textStyle="bold" />
-     </TableRow>
-        <TableRow>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Enter The Name" />
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/et1" />
-        </TableRow>
-        <TableRow>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Enter The University" />
-            <AutoCompleteTextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/actv" />
-            </TableRow>
-          <TableRow>
-              <TextView
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:text="Select The Course" />
-              <Spinner
-                  android:layout_width="150px"
-                  android:layout_height="50px"
-                  android:id="@+id/sp1">
-              </Spinner>
-          </TableRow>
-          <TableRow>
-          <TextView
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:text="Select The Qualification" />
-          <CheckBox
-              android:layout_width="50px"
-              android:layout_height="wrap_content"
-              android:id="@+id/cb1"
-              android:text="MCA"
-              android:onClick="CheckBox" />
-         </TableRow>
-         <TableRow>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="" />
-        <CheckBox
-            android:layout_width="50px"
-            android:layout_height="wrap_content"
-            android:id="@+id/cb2"
-            android:text="BTech"
-            android:onClick="CheckBox" />
-        </TableRow>
-       <TableRow>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Select The Gender"/>
-        <RadioGroup>
-            <RadioButton
-                android:layout_width="70px"
-                android:layout_height="wrap_content"
-                android:id="@+id/rb1"
-                android:text="Male"
-                android:onClick="RadioBox"/>
-            <RadioButton
-                android:layout_width="70px"
-                android:layout_height="wrap_content"
-                android:id="@+id/rb2"
-                android:text="FeMale"
-                android:onClick="RadioBox"/>
-        </RadioGroup>
-        </TableRow>
-        <TableRow>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Course Joining Date"
-            />
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/dp"
-            android:text="Select Date"
-            android:onClick="startdialog"
-            />
-       </TableRow>
-       <TableRow>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Prefered Timings" />
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Select Time"
-            android:id="@+id/tp"
-            android:onClick="timedialog"/>
-          <Button
-           android:layout_width="wrap_content"
-           android:layout_height="match_parent"
-           android:text="SUBMIT"
-           android:id="@+id/search_button"
-           android:onClick="submit"/>
-    </TableRow>
-    </TableLayout>
-    </ScrollView>
+        android:text="HOME"
+        android:onClick="home"
+        android:id="@+id/button"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="GALLERY"
+        android:onClick="gallery"
+        android:id="@+id/button2"
+        android:layout_alignTop="@+id/button3"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CONTACTUS"
+        android:onClick="contactus"
+        android:id="@+id/button3"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="   SANTOSH KUMAR"
+        android:id="@+id/textView"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <fragment
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:name="myapplicationishello.com.example.hsport.fragementconcept.Homefragement"
+        android:id="@+id/fragment"
+        android:layout_below="@+id/button"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/button3"
+        android:layout_alignEnd="@+id/button3"
+        android:layout_above="@+id/textView" />
+</RelativeLayout>
