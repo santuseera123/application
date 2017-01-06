@@ -1,67 +1,59 @@
-package myapplicationishello.com.example.hsport.santurbk;
+package myapplicationishello.com.example.hsport.wifitest;
 
-import android.app.Activity;
+import android.content.Context;
+import android.net.wifi.ScanResult;
+import android.net.wifi.WifiConfiguration;
+import android.net.wifi.WifiManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
+import android.widget.CompoundButton;
+import android.widget.Switch;
+import android.widget.Toast;
 
-public class MainActivity extends Activity {
+import java.util.List;
 
-    String total="";
-    double v1,v2;
-    String sign="";
+public class MainActivity extends AppCompatActivity {
+    WifiManager wmanager;
+    Switch sw1;
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-    }
-    public  void onClick(View v){
+        wmanager=(WifiManager)getSystemService(Context.WIFI_SERVICE);
+        sw1=(Switch)findViewById(R.id.switch1);
+        int i=wmanager.getWifiState();
 
-        Button button=(Button)v;
-        String str=button.getText().toString();
-        total+=str;
-        EditText edit=(EditText)findViewById(R.id.editText);
-        edit.setText(total);
-    }
+        if(i==0){
+            sw1.setChecked(false);
+        }else  if(i==3){
+            sw1.setChecked(true);
+        }
 
-    public  void onAdd(View v){
-
-        v1=Double.parseDouble(total);
-        total="";
-        Button button=(Button)v;
-        String str=button.getText().toString();
-        sign=str;
-        EditText edit=(EditText)findViewById(R.id.editText);
-        edit.setText("");
+        sw1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if(b){
+                    wmanager.setWifiEnabled(true);
+                }else{
+                    wmanager.setWifiEnabled(false);
+                }
+            }
+        });
     }
-    public  void onCalculate(View v){
+        public void getscanresults(View v){
+            List<ScanResult>results=wmanager.getScanResults();
+            for(int i=0;i<results.size();i++){
 
-        EditText edit=(EditText)findViewById(R.id.editText);
-        String str2=edit.getText().toString();
-        v2=Double.parseDouble(str2);
-        double grand_total=0;
-        if(sign.equals("+")){
-            grand_total=v1+v2;
+                ScanResult result=results.get(i);
+                Toast.makeText(getApplicationContext(),result.SSID+"/n"+result.frequency,2000).show();
+            }
         }
-        else  if(sign.equals("-")){
-            grand_total=v1-v2;
-        }
-        else if(sign.equals("*")){
-            grand_total=v1*v2;
-        }
-        else  if(sign.equals("/")){
-            grand_total=v1/v2;
-        }
-        else  if(sign.equals("%")){
-            grand_total=v1%v2;
-        }
-        edit.setText(grand_total+"");
-    }
-    public  void onClear(View v){
-
-        EditText edit=(EditText)findViewById(R.id.editText);
-        edit.setText("");
-        total="";
-    }
+       public void  getconfigurednetworks(View v){
+           List<WifiConfiguration>configs=wmanager.getConfiguredNetworks();
+           for(int i=0;i<configs.size();i++){
+               WifiConfiguration result=configs.get(i);
+               Toast.makeText(getApplicationContext(),result.SSID+"/n"+result.status,2000).show();
+           }
+       }
 }
