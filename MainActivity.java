@@ -1,27 +1,32 @@
-package myapplicationishello.com.example.hsport.buttonexample;
+package myapplicationishello.com.example.hsport.audiorecordingtest;
 
-
-import android.support.v7.app.ActionBarActivity;
-import android.os.Bundle;
+import android.media.MediaRecorder;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.Toast;
 
-public  class MainActivity extends AppCompatActivity  {
-
+public class MainActivity extends AppCompatActivity {
+   MediaRecorder recorder;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        Button clickMeButton=(Button)findViewById(R.id.button_clickMe);
-        clickMeButton.setOnClickListener(this);
+        recorder=new MediaRecorder();
+        recorder=new MediaRecorder();
+        recorder.setAudioSource(MediaRecorder.AudioSource.MIC);
+        recorder.setOutputFormat(MediaRecorder.OutputFormat.AMR_NB);
+        recorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
+        recorder.setOutputFile("/storage/sdcard0/obb.amr");
     }
-    @Override
+      public void start(View v){
+      try {
+          recorder.prepare();
+          recorder.start();
+      }catch (Exception e){
+      }
+      }
+     public void stop(View v){
 
-    public void OnClick(View v) {
-        Toast.makeText(this, "button is now working", Toast.LENGTH_LONG).show();
-
-    }
+         recorder.stop();
+     }
 }
