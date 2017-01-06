@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="myapplicationishello.com.example.hsport.appmessaging">
+    package="myapplicationishello.com.example.hsport.checkbox">
 
     <application
         android:allowBackup="true"
