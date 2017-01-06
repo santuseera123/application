@@ -1,15 +1,125 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+<ScrollView
+  xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-   >
-    <TextView
+    android:layout_width="match_parent">
+    <TableLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/tv"/>
-    <AutoCompleteTextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/actv"/>
-</LinearLayout>
+        >
+     <TableRow>
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="Student Registration Form"
+          android:textStyle="bold" />
+     </TableRow>
+        <TableRow>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Enter The Name" />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/et1" />
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Enter The University" />
+            <AutoCompleteTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/actv" />
+            </TableRow>
+          <TableRow>
+              <TextView
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="Select The Course" />
+              <Spinner
+                  android:layout_width="150px"
+                  android:layout_height="50px"
+                  android:id="@+id/sp1">
+              </Spinner>
+          </TableRow>
+          <TableRow>
+          <TextView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="Select The Qualification" />
+          <CheckBox
+              android:layout_width="50px"
+              android:layout_height="wrap_content"
+              android:id="@+id/cb1"
+              android:text="MCA"
+              android:onClick="CheckBox" />
+         </TableRow>
+         <TableRow>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="" />
+        <CheckBox
+            android:layout_width="50px"
+            android:layout_height="wrap_content"
+            android:id="@+id/cb2"
+            android:text="BTech"
+            android:onClick="CheckBox" />
+        </TableRow>
+       <TableRow>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select The Gender"/>
+        <RadioGroup>
+            <RadioButton
+                android:layout_width="70px"
+                android:layout_height="wrap_content"
+                android:id="@+id/rb1"
+                android:text="Male"
+                android:onClick="RadioBox"/>
+            <RadioButton
+                android:layout_width="70px"
+                android:layout_height="wrap_content"
+                android:id="@+id/rb2"
+                android:text="FeMale"
+                android:onClick="RadioBox"/>
+        </RadioGroup>
+        </TableRow>
+        <TableRow>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Course Joining Date"
+            />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/dp"
+            android:text="Select Date"
+            android:onClick="startdialog"
+            />
+       </TableRow>
+       <TableRow>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Prefered Timings" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select Time"
+            android:id="@+id/tp"
+            android:onClick="timedialog"/>
+          <Button
+           android:layout_width="wrap_content"
+           android:layout_height="match_parent"
+           android:text="SUBMIT"
+           android:id="@+id/search_button"
+           android:onClick="submit"/>
+    </TableRow>
+    </TableLayout>
+    </ScrollView>
